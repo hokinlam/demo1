@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <div class="login w">
+        <div class="login-logo ">
+            <h1><a href="index.php">MPol</a></h1>
+        </div>
+        <form action=""method="post">
+            <div class="login-box">
+                <input type="text"placeholder="用户名"name="username"class="login-box-text">
+                <span class="username-error">用户名格式必须是英文和数字的组合，6-10位字符</span>
+
+                <input type="password"placeholder="密码"name="password"class="login-box-text">
+                <span class="password-error">密码格式必须是英文和数字的组合，6-10位字符</span>
+
+                <input type="submit"value="登录"class="login-box-button">
+                <span class="login-none">
+                     <span>还没有帐号？<a href="signup.php">立即注册</a></span>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

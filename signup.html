@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signup</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <div class="signup w">
+        <div class="signup-logo ">
+            <h1><a href="index.php">MPol</a></h1>
+        </div>
+        <form action=""method="post">
+            <div class="signup-box">
+                <input type="text"placeholder="用户名(英文和数字的组合，6-10位字符)"name="username"class="signup-box-text">
+                <span class="username-error">用户名格式必须是英文和数字的组合，6-10位字符</span>
+
+                <input type="password"placeholder="设置密码(英文和数字的组合，6-10位字符格式)"name="password"class="signup-box-text">
+                <span class="password-error">密码格式必须是英文和数字的组合，6-10位字符</span>
+
+                <input type="password"placeholder="设置密码(确认密码)"class="signup-box-text">
+                <span class="password-error2">请重新确认密码</span>
+
+                <input type="submit"value="注册"class="signup-box-button">
+                <span class="signup-none">
+                     <span>已有账号？<a href="login.php">去登陆</a></span>
+                </span>
+            </div>
+        </form>
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/signup.js"></script>
+</body>
+</html>

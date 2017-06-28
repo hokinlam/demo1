@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>news</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <div class="logout">
+        <p>是否退出该帐号？</p>
+        <button class="fl">是</button>
+        <button class="fl">否</button>
+
+    </div>
+    <!--main-header-->
+    <div class="main-header clearfix w">
+
+        <div class="main-header-logo">
+            <h3><a href="index.php">MPol</a></h3>
+        </div>
+        <div class="main-header-right">
+            <div class="main-header-right-top clearfix">
+                <div class="fl">
+                    <input type="text"placeholder="s8+"class="main-header-right-top-search-text">
+                    <input type="button"class="main-header-right-top-search-button">
+                </div>
+                <div class="fr">
+                    <?php if(!empty($_SESSION['username'])){
+                             echo $_SESSION['username'].'<span>&nbsp&nbsp&nbsp退出</span>';
+                        }else{
+                            echo "<a href='login.php'class='login'>登录</a><a href='signup.php'class='signup'>注册</a>";
+
+                    }
+
+
+                    ?>
+
+
+                </div>
+            </div>
+            <div class="main-header-right-bottom">
+                <ul>
+                    <li><a href="index.php">首页</a></li>
+                    <li><a href="allnews.php">资讯</a></li>
+                    <li><a href="index.php#tj">品牌</a></li>
+                    <li class="last-li"><a href="index.php#mb">留言</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="allnews-content clearfix w">
+        <div class="allnews-content-main ">
+            <div class="allnews-content-main-top">
+                <h2>资讯</h2>
+                <ul>
+                    <li><a href=""class="today current">今天</a></li>
+                    <li><a href=""class="yesterday">以前</a></li>
+                </ul>
+            </div>
+            <div class="allnews-content-main-bottom todayNews">
+                <ul>
+                    <?php foreach($row1 as $k=>$v) { ?>
+                    <li>
+
+                        <a href="news.php?act=<?php echo $v['id'] ?>"><img src="<?php echo $v['icon'] ?>"><?php echo $v['title'] ?><span><?php echo $v['time'] ?></span></a>
+
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+            <div class="allnews-content-main-bottom oldNews ">
+                <ul>
+                    <?php foreach($row2 as $k=>$v) { ?>
+                    <li>
+
+                        <a href="news.php?act=<?php echo $v['id'] ?>"><img src="<?php echo $v['icon'] ?>"><?php echo $v['title'] ?><span><?php echo $v['time'] ?></span></a>
+
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        $('.today').mouseenter(function () {
+            $(this).addClass("current").parent().siblings("li").children("a").removeClass("current");
+            $('.todayNews').show();
+            $('.oldNews').hide();
+
+        })
+        $('.yesterday').mouseenter(function () {
+            $(this).addClass("current").parent().siblings("li").children("a").removeClass("current");
+            $('.oldNews').show();
+            $('.todayNews').hide();
+        })
+
+        $(".main-header-right-top .fr span").click(function () {
+            $(".logout").show();
+            $(".logout button:eq(0)").click(function(){
+                window.location.href="logout.php";
+            })
+            $(".logout button:eq(1)").click(function(){
+                $(".logout").hide();
+            })
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <!--search-header-->
+    <div class="search-header w">
+        <div class="search-logo ">
+            <h1><a href="index.php">MPol</a></h1>
+        </div>
+    </div>
+    <!--search-content-->
+    <div class="search-content">
+        <div class="w">
+            <div class="search-content-box">
+                <div class="search-content-box-type">手机</div>
+
+                <input type="text"class="search-content-box-text"placeholder="<?php echo $pro ?>">
+
+                <input type="button"class="search-content-box-button">
+            </div>
+            <div class="search-content-bottom">
+                <div class="search-content-bottom-title">
+                    <ul>
+                        <li class="current">
+                            <div class="search-content-bottom-title-phone">手机</div>
+
+                        </li>
+                        <li class="">
+                            <div class="search-content-bottom-title-news">资讯</div>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="search-content-bottom-result">
+                    <ul>
+                        <?php foreach($row as $k=>$v) { ?>
+                            <li><a href="singlephone.php?act=<?php echo $v['id'] ?>"><?php echo $v['proName'] ?></a></li>
+
+                        <?php }  ?>
+                    </ul>
+                </div>
+                <div class="search-content-bottom-result2 ">
+                    <ul>
+                        <?php foreach($row2 as $k=>$v) { ?>
+                        <li><a href="news.php?act=<?php echo $v['id'] ?>"><?php echo $v['title'] ?></a></li>
+
+                        <?php }  ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        $('.search-content-bottom-title li:eq(0)').mouseenter(function () {
+            $(this).addClass("current").siblings("li").removeClass("current");
+            $('.search-content-bottom-result').show();
+            $('.search-content-bottom-result2').hide();
+
+        })
+        $('.search-content-bottom-title li:eq(1)').mouseenter(function () {
+            $(this).addClass("current").siblings("li").removeClass("current");
+            $('.search-content-bottom-result2').show();
+            $('.search-content-bottom-result').hide();
+
+        })
+    </script>
+</body>
+</html>

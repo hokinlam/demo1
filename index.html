@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MPol</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <!--main-header-->
+    <div class="main-header clearfix w">
+        <div class="logout">
+            <p>是否退出该帐号？</p>
+                <button class="fl">是</button>
+                <button class="fl">否</button>
+
+        </div>
+            <div class="main-header-logo">
+                <h3><a href="index.php">MPol</a></h3>
+            </div>
+            <div class="main-header-right">
+                <div class="main-header-right-top clearfix">
+                    <div class="fl">
+                        <form action="search.php"method="post">
+                            <input type="text"value="xiaomi"class="main-header-right-top-search-text"name="pro">
+                            <input type="submit"class="main-header-right-top-search-button"value="">
+                        </form>
+                    </div>
+                    <div class="fr">
+                        <?php if(!empty($_SESSION['username'])){
+                            echo $_SESSION['username'].'<span>&nbsp&nbsp&nbsp退出</span>';
+                        }else{
+                            echo "<a href='login.php'class='login'>登录</a><a href='signup.php'class='signup'>注册</a>";
+
+                        }
+
+
+                        ?>
+
+
+                    </div>
+                </div>
+                <div class="main-header-right-bottom">
+                    <ul>
+                        <li><a href="index.php">首页</a></li>
+                        <li><a href="allnews.php">资讯</a></li>
+                        <li><a href="index.php#tj">品牌</a></li>
+                        <li class="last-li"><a href="index.php#mb">留言</a></li>
+                    </ul>
+                </div>
+            </div>
+
+    </div>
+    <!--main-content-->
+    <div class="main-content clearfix w">
+
+            <div class="main-content-news">
+                <div class="main-content-news-title">
+                    <a href="">今日资讯</a>
+                </div>
+                <div class="main-content-news-bottom">
+                    <ul>
+
+                        <?php foreach($row1 as $k=>$v) { ?>
+                            <li>
+                                <a href="news.php?act=<?php echo $v['id'] ?>" class="tabl"><img src="<?php echo $v['icon'] ?>" ></a>
+                                <a href="news.php?act=<?php echo $v['id'] ?>"class="tabm"name="main-news"><?php echo $v['title'] ?></a>
+                                <span class="tabr"><?php echo $v['time'] ?></span>
+                            </li>
+                        <?php } ?>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="main-content-slide" id="box">
+                <div class="main-content-slide-inner">
+                    <ul>
+                        <?php foreach($row3 as $k=>$v) { ?>
+                            <li><a href="news.php?act=<?php echo $v['id'] ?>"><img src="<?php echo $v['newsImgIndex'] ?>"></a></li>
+
+                        <?php } ?>
+                    </ul>
+                    <ol>
+
+                    </ol>
+                    <div class="arrow">
+                        <span class="arrow-left"><</span>
+                        <span class="arrow-right">></span>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    <!--main-recommend-->
+    <div class="main-recommend clearfix w"id="tj">
+            <div class="main-recommend-title clearfix">
+                <h3><a href="">品牌</a></h3>
+                <ul class="li">
+                    <li class="current"><a href="" >苹果</a></li>
+                    <li><a href="">三星</a></li>
+                    <li><a href="">小米</a></li>
+                    <li><a href="">华为</a></li>
+                </ul>
+            </div>
+
+            <div class="main-recommend-list ul ">
+            <ul class=" show ">
+                <?php foreach($row2_apple as $k=>$v){ ?>
+                     <li>
+                        <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-name"><?php echo $v['proName'] ?></a>
+                        <div class="main-recommend-list-img">
+                            <img src="<?php echo $v['proIndex'] ?>">
+                        </div>
+                        <div class="main-recommend-list-detail">
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-detail-money"><?php echo $v['proPrice'] ?></a>
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>">详细参数</a>
+
+                        </div>
+                    </li>
+                <?php }?>
+            </ul>
+                <ul >
+                    <?php foreach($row2_samsung as $k=>$v){ ?>
+                    <li>
+                        <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-name"><?php echo $v['proName'] ?></a>
+                        <div class="main-recommend-list-img">
+                            <img src="<?php echo $v['proIndex'] ?>">
+                        </div>
+                        <div class="main-recommend-list-detail">
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-detail-money"><?php echo $v['proPrice'] ?></a>
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>">详细参数</a>
+                        </div>
+                    </li>
+                    <?php }?>
+                </ul>
+
+                <ul>
+                    <?php foreach($row2_xiaomi as $k=>$v){ ?>
+                    <li>
+                        <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-name"><?php echo $v['proName'] ?></a>
+                        <div class="main-recommend-list-img">
+                            <img src="<?php echo $v['proIndex'] ?>">
+                        </div>
+                        <div class="main-recommend-list-detail">
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-detail-money"><?php echo $v['proPrice'] ?></a>
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>">详细参数</a>
+                        </div>
+                    </li>
+                    <?php }?>
+                </ul>
+
+                <ul>
+                    <?php foreach($row2_huawei as $k=>$v){ ?>
+                    <li>
+                        <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-name"><?php echo $v['proName'] ?></a>
+                        <div class="main-recommend-list-img">
+                            <img src="<?php echo $v['proIndex'] ?>">
+                        </div>
+                        <div class="main-recommend-list-detail">
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>"class="main-recommend-list-detail-money"><?php echo $v['proPrice'] ?></a>
+                            <a href="singlephone.php?act=<?php echo $v['id'] ?>">详细参数</a>
+                        </div>
+                    </li>
+                    <?php }?>
+                </ul>
+            </div>
+    </div>
+    <!--Message-Board-->
+    <div class="message-board clearfix w "id="mb">
+        <a href=""class="message-board-titile">留言板</a>
+        <div class="message-board-content">
+            <ul id="msg">
+
+            </ul>
+        </div>
+        <div class="message-board-inputbox">
+           <!--  <form action=""method="post"> -->
+                <input type="text"class="message-board-inputbox-text" name="content" id="content" placeholder="说些什么...">
+                <button class="message-board-inputbox-button"id="tijiao">提交</button>
+            <!-- </form> -->
+        </div>   
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <div class="w">
+            <span>
+                <a href="index.php">首页</a>
+                <a href="">联系</a>
+                <a href="">广告</a>
+                <a href="">友情链接</a>
+                <a href="">打赏</a>
+            </span>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        var content = document.getElementsByClassName('message-board-inputbox')[0].children[0];
+        document.querySelector("#tijiao").onclick = function(){
+            var ajax1 = new XMLHttpRequest();
+            ajax1.open("post","index.php");
+            ajax1.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            ajax1.send("content="+content.value);
+            content.value = "";
+        }
+        
+
+       setInterval(function () {
+            $.ajax({
+                type: "get",
+                url: "index.php",
+                dataType:'json',
+                success: function(msg){
+                    var nr = '';
+                    for(var i= 0;i<msg.length;i++){
+                        nr += '<li>';
+                        nr += '<span class="message-board-content-name">';
+                        nr +=  msg[i].username;
+                        nr += ':';
+                        nr += " </span>";
+                        nr += '<span class="message-board-content-word">'
+                        nr +=  msg[i].content;
+                        nr += '</span>';
+                        nr += '<span class="message-board-content-ago">'
+                        nr +=  msg[i].systime;
+                        nr += '</span>';
+                        nr += '</li>'
+                    }
+                    $('#msg').html(nr);
+                }
+            });
+        },100)
+
+
+       
+    </script>
+    <script>
+        $(".main-header-right-top .fr span").click(function () {
+            $(".logout").show();
+            $(".logout button:eq(0)").click(function(){
+                window.location.href="logout.php";
+            })
+            $(".logout button:eq(1)").click(function(){
+                $(".logout").hide();
+            })
+
+        })
+    </script>
+
+</body>
+</html>

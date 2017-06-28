@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>phone</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <!--main-header-->
+    <div class="main-header clearfix w">
+
+        <div class="main-header-logo">
+            <h3><a href="index.php">MPol</a></h3>
+        </div>
+        <div class="main-header-right">
+            <div class="main-header-right-top clearfix">
+                <div class="fl">
+                    <input type="text"placeholder="s8+"class="main-header-right-top-search-text">
+                    <input type="button"class="main-header-right-top-search-button">
+                </div>
+                <div class="fr">
+                    <a href="login.php"class="login">登录</a>
+                    <a href="signup.php"class="signup">注册</a>
+                </div>
+            </div>
+            <div class="main-header-right-bottom">
+                <ul>
+                    <li><a href="index.php">首页</a></li>
+                    <li><a href="allnews.php">资讯</a></li>
+                    <li><a href="index.php#tj">品牌</a></li>
+                    <li class="last-li"><a href="index.php#mb">留言</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!--singlephone-content-->
+    <div class="singlephone clearfix w">
+        <div class="singlephone-top clearfix">
+            <div class="singlephone-top-pic">
+                <!--放大镜部分-->
+                    <div class="singlephone-top-pic-small">
+                        <img src="<?php echo $r['proSImg'] ?>"/>
+                        <div class="singlephone-top-pic-small-mask"></div>
+                    </div>
+                    <div class="singlephone-top-pic-big">
+                        <img src="<?php echo $r['proBimg'] ?>"/>
+                    </div>
+
+            </div>
+            <div class="singlephone-top-parameter">
+                <h3><?php echo $r['proName'] ?></h3>
+                <ul class="singlephone-top-parameter-top">
+                    <li><span>参考价格:</span><span><?php echo $r['proPrice'] ?></span></li>
+                </ul>
+                <ul class="singlephone-top-parameter-bottom">
+                    <li>
+                        <p class="singlephone-top-parameter-bottom-title">基本信息</p>
+                        <p><span>上市时间：</span><span><?php echo $r['proTime'] ?></span></p>
+                        <p><span>手机尺寸：</span><span><?php echo $r['proSize'] ?></span></p>
+                    </li>
+                    <li>
+                        <p class="singlephone-top-parameter-bottom-title">屏幕信息：</p>
+                        <p><span>屏幕尺寸：：</span><span><?php echo $r['proSSize'] ?></span></p>
+                        <p><span>手屏幕分辨率：</span><span><?php echo $r['proRes'] ?></span></p>
+                    </li>
+                    <li>
+                        <p class="singlephone-top-parameter-bottom-title">拍照信息</p>
+                        <p><span>后置相机：</span><span><?php echo $r['proBack'] ?></span></p>
+                        <p><span>前置相机：</span><span><?php echo $r['proFront'] ?></span></p>
+                    </li>
+                    <li>
+                        <p class="singlephone-top-parameter-bottom-title">硬件信息</p>
+                        <p><span>操作系统：</span><span><?php echo $r['proSystem'] ?></span></p>
+                        <p><span>CPU型号：</span><span><?php echo $r['proCpu'] ?></span></p>
+                        <p><span>运行内存：</span><span><?php echo $r['proRam'] ?></span></p>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+    <!--Message-Board-->
+    <div class="message-board clearfix w "id="mb2">
+        <a href=""class="message-board-titile">评论区</a>
+        <div class="message-board-content">
+            <ul id="msg2">
+                <?php foreach($row5 as $k=>$v) { ?>
+                <li>
+                    <span class="message-board-content-name"><?php echo $v['username'] ?>：</span>
+                    <span class="message-board-content-word"><?php echo $v['content'] ?></span>
+                    <span class="message-board-content-ago"><?php echo $v['systime'] ?></span>
+                </li>
+                <?php } ?>
+
+
+            </ul>
+        </div>
+        <div class="message-board-inputbox">
+            <form action=""method="post">
+                <input type="text"class="message-board-inputbox-text" name='content'id='content'placeholder="说些什么...">
+                <button class="message-board-inputbox-button">提交</button>
+            </form>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+        <div class="w">
+            <span>
+                <a href="index.php">首页</a>
+                <a href="">联系</a>
+                <a href="">广告</a>
+                <a href="">友情链接</a>
+                <a href="">打赏</a>
+            </span>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/singlephone.js"></script>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>news</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <div class="logout">
+        <p>是否退出该帐号？</p>
+        <button class="fl">是</button>
+        <button class="fl">否</button>
+
+    </div>
+    <!--main-header-->
+    <div class="main-header clearfix w">
+    <div class="main-header-logo">
+        <h3><a href="index.php">MPol</a></h3>
+    </div>
+    <div class="main-header-right">
+        <div class="main-header-right-top clearfix">
+            <div class="fl">
+                <input type="text"placeholder="s8+"class="main-header-right-top-search-text">
+                <input type="button"class="main-header-right-top-search-button">
+            </div>
+            <div class="fr">
+                <?php if(!empty($_SESSION['username'])){
+                              echo $_SESSION['username'].'<span>&nbsp&nbsp&nbsp退出</span>';
+                        }else{
+                            echo "<a href='login.php'class='login'>登录</a><a href='signup.php'class='signup'>注册</a>";
+
+                }
+
+
+                ?>
+            </div>
+        </div>
+        <div class="main-header-right-bottom">
+            <ul>
+                <li><a href="index.php">首页</a></li>
+                <li><a href="allnews.php">资讯</a></li>
+                <li><a href="index.php#tj">品牌</a></li>
+                <li class="last-li"><a href="index.php#mb">留言</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+    <!--news-content--->
+    <div class="news-content clearfix w">
+        <div class="news-content-main">
+
+            <h2><?php echo $r['title'] ?></h2>
+            <p><?php echo $r['content1'] ?></p>
+            <p><img src="<?php echo $r['newsimg'] ?>"></p>
+            <p><?php echo $r['content2'] ?></p>
+        </div>
+
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+        <div class="w">
+            <span>
+                <a href="index.php">首页</a>
+                <a href="">联系</a>
+                <a href="">广告</a>
+                <a href="">友情链接</a>
+                <a href="">打赏</a>
+            </span>
+        </div>
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+
+        <script>
+        $(".main-header-right-top .fr span").click(function () {
+            $(".logout").show();
+            $(".logout button:eq(0)").click(function(){
+                window.location.href="logout.php";
+            })
+            $(".logout button:eq(1)").click(function(){
+                $(".logout").hide();
+            })
+
+        })
+
+         </script>
+</body>
+</html>
